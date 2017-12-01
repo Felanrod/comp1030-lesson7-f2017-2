@@ -51,17 +51,34 @@ namespace Week7
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            lblSum.Text = "";
+            bool ok = true;
             //checkBlank();
             if (Int32.TryParse(txtX.Text, out Int32 x) == false)
             {
-                lblSum.Text = "Enter an Integer for x.";
+                lblSum.Text = "Enter an Integer for x. ";
+                ok = false;
+            } else if (x < 0)
+            {
+                lblSum.Text = "Enter a positive number for x. ";
+                ok = false;
             }
             if (Int32.TryParse(txtY.Text, out Int32 y) == false)
             {
-                lblSum.Text = "Enter an Integer for x.";
+                lblSum.Text += "Enter an Integer for y.";
+                ok = false;
             }
-            Int32 sum = addNums(txtX.Text, txtY.Text);
-            lblSum.Text = sum.ToString();
+            else if (y < 0)
+            {
+                lblSum.Text += "Enter a positive number for y.";
+                ok = false;
+            }
+            if (ok)
+            {
+                Int32 sum = addNums(txtX.Text, txtY.Text);
+                lblSum.Text = sum.ToString();
+            }
+            
         }
 
         private Int32 addNums(String numX, String numY)
