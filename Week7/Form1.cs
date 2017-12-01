@@ -51,6 +51,15 @@ namespace Week7
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            //checkBlank();
+            if (Int32.TryParse(txtX.Text, out Int32 x) == false)
+            {
+                lblSum.Text = "Enter an Integer for x.";
+            }
+            if (Int32.TryParse(txtY.Text, out Int32 y) == false)
+            {
+                lblSum.Text = "Enter an Integer for x.";
+            }
             Int32 sum = addNums(txtX.Text, txtY.Text);
             lblSum.Text = sum.ToString();
         }
@@ -60,6 +69,18 @@ namespace Week7
             Int32 sum = Convert.ToInt32(Convert.ToDecimal(numX)) + Convert.ToInt32(Convert.ToDecimal(numY));
 
             return sum;
+        }
+
+        private void checkBlank()
+        {
+            if (txtX.Text == "")
+            {
+                txtX.Text = "0";
+            }
+            if (txtY.Text == "")
+            {
+                txtY.Text = "0";
+            }
         }
     }
 }
